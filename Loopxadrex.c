@@ -1,12 +1,41 @@
+
 #include <stdio.h>
 
-int main () {
 
-    int bispo = 1;
-    int rainha = 1;
-    int torre  = 1;
+
+    void movimento (int xadrez) {
+    if (xadrez > 0 ) { 
+        printf("Esquerda \n");
+        movimento (xadrez -1);
+        return; 
+    }
+}
+
+    void movimento2 (int torre ) {
+  if (torre>0) {
+    printf ("Direita \n");
+    movimento2 (torre -1);
+
+  }
+}
+
+    void movimento3 (int bispo) {
+    if (bispo >0) {
+
+    printf ("Diagonal direita \n");
+    movimento3 (bispo -1);
+}
+
+}
+
+    int main () {
+
+    int bispo = 5;
+    int rainha = 8;
+    int torre  = 5;
     int cavalo = 1;
     int opcao;
+  
 
     printf ("      XADREZ      \n");
     printf (" 1 - Quero mover a rainha \n");
@@ -24,30 +53,14 @@ int main () {
     case 1: 
 
     printf ("Você escolheu a rainha \n");
-    while (rainha <= 5) {
-    printf ("Direita \n");
-    rainha++;
-    }
+    movimento (rainha);
 
     break;
 
     case 2: 
 
     printf ("Você escolheu a torre \n");
-    
-    int i = 0, j = 0;
-
-    while (i < 5) {
-    
-    i++;
-
-    j=0;
-
-    while (j<5) {
-
-        printf ("Direita \n");
-        j++;
-    }
+    movimento3 (torre);
 
 
     break;
@@ -64,26 +77,26 @@ int main () {
 
     case 4: 
     
-    printf ("Você escolheu o cavalo \n");
+    printf("Você escolheu o cavalo \n");
 
-    for (int i= 0;  i<2; i++) {
-
-        printf ("Baixo \n");
- }
-
-    for (int j=0; j<1; j++) {
-
-    printf ("Direita \n");; }
-
-    break;
-
+    for (int i = 0, j = 0; i < 2 || j < 1;) {
+        if (i < 2) { 
+            printf("Cima\n", i + 1);
+            i++;
+        }
+        if (i == 2 && j < 1) { 
+            printf("Direita \n", j + 1);
+            j++;
+        }
     }
 
+    break;
 
     case 5: 
 
     printf ("Você está saindo do jogo...");
     break;
+    
 
 
     default:
@@ -91,7 +104,11 @@ int main () {
     printf ("Opção inválida, tente novamente.");
     break;
     }
+
 }
+
+
+
 
 
 
